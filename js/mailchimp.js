@@ -7,7 +7,7 @@
             $('.form__hint--error').html();
             let formFields = $('#subscribe-form').serialize();
             $.ajax({
-                url: 'https://whatstocks.com/inc/mailchimp.php',
+                url: '.netlify/functions/subscribe',
                 type: "POST",
                 data: formFields,
                 dataType: 'json',
