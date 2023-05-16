@@ -23,8 +23,6 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
 
         const data = new URLSearchParams(event.body)
 
-        console.log(data)
-
         const response = await fetch(
             `https://${process.env.MAILCHIMP_SERVER_LOC}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}`, {
                 method: "POST",
@@ -43,11 +41,47 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
                 }]})
             }) 
 
-        console.log(response)
+        if (!response.ok) {
+            return {
+                statusCode: response.status,
+                body: response.statusText,
+            }; 
+
+        }
+
+        const mcResponse = await response.json()
+
+        if (mcResponse.error_count>0) {
+            const error = mcResponse.errors[0]
+
+            return {
+                statusCode: 200,
+                body: JSON.stringify({
+                    title: error.error_code,
+                    status: 400,
+                    detail: error.error,
+                    instance: error.email_address
+                })
+            }
+        }
+        
+        if (mcResponse.total_created > 0) {
+            const member = mcResponse.new_member[0]
+            return {
+                statusCode: 200,
+                body: JSON.stringify({ 
+                    id: member.id,
+                    email_address: member.email_address,
+                    unique_email_id: member.unique_email_id,
+                    email_type: member.email_type,
+                    status: member.status,
+                    merge_fields: member.merge_fields
+                }),
+            }; 
+        }
 
         return {
-            statusCode: 500,
-            body: JSON.stringify({ message: "Subscribe: Not Implemented" }),
+            statusCode: 500
         }; 
     }
 

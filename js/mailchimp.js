@@ -17,16 +17,16 @@
                 success: function(data) {
                     localStorage.removeItem('subscribe-form-temp-key');
                     $('#subscribe-form').trigger("reset");
-                    if (data.contact_id) {
+                    if (data.unique_email_id) {
                         $('#getInTouch').html('Get in touch');
                         $('form .subscribe-modal__form-group').hide();
                         $('form .subscribe-modal__form-submit').hide();
                         $('.subscribe-modal__title').html('Thank you for subscription');
                     } else if (data.status == 400) {
-                        if (data.title == 'Invalid Resource') {
-                            $('.form__hint--error').html(data.detail);
-                        } else if (data.title == 'Member Exists') {
+                        if (data.title == 'Member Exists' || data.title == "ERROR_CONTACT_EXISTS")  {
                             $('.form__hint--error').html('This email is already a list member');
+                        } else if (data.detail!='') {
+                            $('.form__hint--error').html(data.detail);
                         }
                     }
                 },
