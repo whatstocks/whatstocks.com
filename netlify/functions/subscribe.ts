@@ -29,21 +29,21 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
             `https://${process.env.MAILCHIMP_SERVER_LOC}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}`, {
                 method: "POST",
                 headers: {
-                    auth: `${process.env.MAILCHIMP_API_KEY}`
+                    'Authorization': `Basic netlify:${process.env.MAILCHIMP_API_KEY}`
                 },
                 body: JSON.stringify({
                     email_address: data.get('email'),
                     status: "subscribed",
                     merge_fields: {
                         "TYPE": data.get('type'),
-                        "NAME": data.get('name'),
+                        "FULLNAME": data.get('name'),
                         "PHONE": data.get('phone')
                     }
                 })
             }) 
 
         console.log(response)
-        
+
         return {
             statusCode: 500,
             body: JSON.stringify({ message: "Subscribe: Not Implemented" }),
