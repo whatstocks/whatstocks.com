@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Whatstocks | Cookies</title>
+    <meta name="theme-color" content="#fff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="img/favicons/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="16x16" href="img/favicons/favicon-16x16.png" type="image/png">
+    <link rel="icon" sizes="32x32" href="img/favicons/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="img/favicons/apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="img/favicons/apple-touch-icon-1024x1024.png">
+    <link rel="stylesheet" href="styles/main.min.css">
+</head>
+<body>
+<header class="header__secondary" id="header">
+    <div class="container header__secondary__content"><a class="header__secondary__logo" href="/"><img
+                    src="img/svg/dark-logo.svg"></a>
+        <button class="btn btn--purple btn--sm btn--no-shadow show-subscribe-modal">Subscribe</button>
+    </div>
+</header>
+<main>
+    <div class="page-container content-formatting">
+        <div class="back-btn"><a href="/">Back</a></div>
+        <h1 class="title">Cookies</h1>
+    </div>
+    <section class="section app bg-gradient--purple text--white text--center">
+        <div class="container app__content">
+            <div class="app__icon"><img src="img/app-icon.png"></div>
+            <div class="app__title h4 app__soon">Coming soon</div>
+            <h3 class="app__sub-title h2 mb--lg">
+                Application on App Store <br/>
+                and Google Play
+            </h3>
+            <div class="app__text body-l text--grey">
+                WhatStocks is an innovative and fun way to discover new stocks,<br/>
+                see what your friends think or ask MyEdge all your stock<br/>
+                questions, all from the ease of your mobile device.
+            </div>
+            <button class="btn btn--purple show-subscribe-modal">Subscribe for updates</button>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <div class="container footer__content text--white">
+        <div class="footer__row mb--md">
+            <nav class="footer__nav footer__nav nav">
+                <a class="nav__link" href="privacy.php">Privacy</a>
+                <a class="nav__link" href="terms.php">Terms</a>
+                <a class="nav__link" href="cookies.php">Cookies</a>
+                <a class="nav__link" href="downloads/regulations.zip" download>Regulations</a>
+            </nav>
+            <nav class="footer__socials nav"><a href="https://facebook.com"><img src="img/svg/icon-facebook.svg"></a>
+                <a href="https://twitter.com"><img src="img/svg/icon-twitter.svg"></a>
+                <a href="https://instagram.com"><img src="img/svg/icon-instagram.svg"></a>
+                <a href="https://youtube.com"><img src="img/svg/icon-youtube.svg"></a>
+            </nav>
+        </div>
+        <div class="footer__email">inbox@whatstocks.com</div>
+        <div class="footer__row">
+            <div class="footer__copy text--grey">Copyright © 2022 WhatStocks. All rights reserved</div>
+        </div>
+    </div>
+</footer>
+<div class="subscribe-modal" id="subscribe-modal">
+    <div class="subscribe-modal__close">
+        <button class="subscribe-modal__close-button" id="subscribe-modal-close"><img src="img/svg/icon-close.svg"></button>
+    </div>
+    <div class="subscribe-modal__content">
+        <h3 class="subscribe-modal__title h3 modal__title text--center">Get notified</h3>
+        <div class="form__errors"></div>
+        <form class="subscribe-modal__form form" id="subscribe-form">
+            <div class="subscribe-modal__form-group form__group">
+                <label class="subscribe-modal__form-label form__label">Select notification type</label>
+                <ul class="subscribe-modal__form-list form__radio-buttons">
+                    <li class="subscribe-modal__form-item form__radio-buttons-item">
+                        <input class="subscribe-modal__form-radio" id="ios" type="radio" name="type" value="ios" checked="checked">
+                        <label class="subscribe-modal__form-label form__label" for="ios">iOS updates</label>
+                    </li>
+                    <li class="subscribe-modal__form-item form__radio-buttons-item">
+                        <input class="subscribe-modal__form-radio" id="android" type="radio" name="type" value="android">
+                        <label class="subscribe-modal__form-label form__label" for="android">Android updates</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="subscribe-modal__form-group form__group">
+                <label class="subscribe-modal__form-label form__label">Email address</label>
+                <input class="form__control subscribe-modal__form-input" type="text" name="email">
+                <div class="form__hint form__hint--error"></div>
+            </div>
+            <div class="subscribe-modal__form-group form__group">
+                <label class="subscribe-modal__form-label form__label">Full name (optional)</label>
+                <input class="form__control fullname__mask subscribe-modal__form-input" type="text" name="name">
+            </div>
+            <div class="subscribe-modal__form-group form__group">
+                <label class="subscribe-modal__form-label form__label">Phone number (optional)</label>
+                <input class="form__control phone__mask subscribe-modal__form-input" type="text" name="phone" placeholder="(123) 456-7891">
+            </div>
+            <div class="subscribe-modal__form-actions">
+                <button id="getInTouch" class="subscribe-modal__form-submit btn btn--purple btn--block" type="submit">Get in touch</button>
+            </div>
+            <div class="subscribe-modal__form-group form__group">
+                <div class="form__check-inline">
+                    <input id="offers" type="checkbox" name="offers" value="offers">
+                    <label for="offers">I would like WhatStocks to send me exciting offers and other communications about WhatStocks</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<script src="js/main.min.js"></script>
+<script src="js/mailchimp.js"></script>
+</body>
+</html>
