@@ -1,5 +1,6 @@
 import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 
+
 const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
     if (event.httpMethod=='POST') {
         if (event.headers.origin=="") {  // TODO make this whatstocks.com
@@ -20,10 +21,29 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
             }
         }
 
-        const form = new URLSearchParams(event.body)
+        const data = new URLSearchParams(event.body)
 
-        console.log(form)
+        console.log(data)
 
+        const response = await fetch(
+            `https://${process.env.MAILCHIMP_SERVER_LOC}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}`, {
+                method: "POST",
+                headers: {
+                    auth: `${process.env.MAILCHIMP_API_KEY}`
+                },
+                body: JSON.stringify({
+                    email_address: data.get('email'),
+                    status: "subscribed",
+                    merge_fields: {
+                        "TYPE": data.get('type'),
+                        "NAME": data.get('name'),
+                        "PHONE": data.get('phone')
+                    }
+                })
+            }) 
+
+        console.log(response)
+        
         return {
             statusCode: 500,
             body: JSON.stringify({ message: "Subscribe: Not Implemented" }),
