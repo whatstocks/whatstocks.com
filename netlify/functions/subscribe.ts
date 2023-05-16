@@ -29,9 +29,10 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
             `https://${process.env.MAILCHIMP_SERVER_LOC}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}`, {
                 method: "POST",
                 headers: {
-                    'Authorization': `Basic netlify:${process.env.MAILCHIMP_API_KEY}`
+                    'Authorization': `Basic ${Buffer.from(`netlify:${process.env.MAILCHIMP_API_KEY}`).toString('base64')}`
                 },
                 body: JSON.stringify({
+                    members: [{
                     email_address: data.get('email'),
                     status: "subscribed",
                     merge_fields: {
@@ -39,7 +40,7 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
                         "FULLNAME": data.get('name'),
                         "PHONE": data.get('phone')
                     }
-                })
+                }]})
             }) 
 
         console.log(response)
