@@ -66,7 +66,7 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
         }
         
         if (mcResponse.total_created > 0) {
-            const member = mcResponse.s[0]
+            const member = mcResponse.new_members[0]
             return {
                 statusCode: 200,
                 body: JSON.stringify({ 
